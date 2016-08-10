@@ -1,3 +1,7 @@
+// 
+// running app using express
+// set DEBUG=myapp:* & npm start
+// 
 //require express
 var express = require('express');
 var path = require('path');
@@ -9,6 +13,19 @@ var bodyParser = require('body-parser');
 //require index.js & users.js
 var index = require('./routes/index');
 var users = require('./routes/users');
+
+//require Sequelize ORM
+var orm = require('./models/sequelize');
+
+//test the connection
+orm
+  .authenticate()
+  .then(function(err) {
+    console.log('mysql:true');
+  })
+  .catch(function (err) {
+    console.log('Unable to connect to the database:', err);
+  });
 
 //create an instance of express & call it app
 var app = express();
@@ -27,6 +44,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 //static content will be served from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'bower_components')));
 
 //for a request @ localhost:3000/ use this reouter object
 app.use('/', index);

@@ -1,28 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <% include ./partials/head %>
-</head>
-<body class="container">
-    <header>
-        <% include ./partials/header %>
-    </header>
-
-    <main>
-        <div class="jumbotron">
-            <p>This came from Express: <%= tagline %></p>
-            This also came from Express:<br/>
-            <ul>
-              <% drinks.forEach(function(drink) { %>
-              <li><%= drink.name %> : <%= drink.drunkness %></li>
-              <% }); %>
-            </ul>
-        </div>
+<% include ./partials/head %>
+<body class="container" ng-controller='indexController'>
+<% include ./partials/header %>
+    <main ng-view>
     </main>
-
     <footer>
         <% include ./partials/footer %>
     </footer>
-    
 </body>
 </html>

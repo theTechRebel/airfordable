@@ -18,20 +18,20 @@ module.exports =function(grunt){
 					livereload: true
 				},
 				express:{
-						files:['<%= jshint.files %>'],
+						files:['<%= jshint.files %>','views/**/*.ejs'],
 						tasks: ['express'],
 						options:{
 							spawn:false
 						}	
 				},
-				files:['<%= jshint.files %>'],
+				files:['<%= jshint.files %>','views/**/*.ejs'],
 				tasks:['jshint']
 			},
 
 			express: {
     options: {
       background: true,
-      node_env: 'dev',
+      node_env: 'development',
       debug: true
     },
     dev: {

@@ -10,9 +10,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-//require index.js & users.js
+//require index.js
 var index = require('./routes/index');
-var users = require('./routes/users');
 
 //require Sequelize ORM
 var orm = require('./models/sequelize');
@@ -45,11 +44,10 @@ app.use(cookieParser());
 //static content will be served from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
+app.use(express.static(path.join(__dirname, 'views')));
 
 //for a request @ localhost:3000/ use this reouter object
 app.use('/', index);
-//for a request @ localhost:3000/users use this reouter object
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

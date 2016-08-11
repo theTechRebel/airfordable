@@ -1,6 +1,6 @@
 var app = angular.module('airfordableApp',['ngRoute']);
 
-app.config(function ($routeProvider) {
+app.config(function ($routeProvider,$locationProvider) {
 	$routeProvider
 			.when('/', {
 				templateUrl: 'pages/index.ejs',
@@ -14,6 +14,8 @@ app.config(function ($routeProvider) {
 				templateUrl: 'pages/contact.ejs',
 				controller: 'contactController'
 			});
+
+			$locationProvider.html5Mode(true).hashPrefix('!');
 });
 
 app.controller('indexController', function($scope,$route){

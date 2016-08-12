@@ -2,8 +2,8 @@ var app = angular.module('airfordableApp',['ngRoute']);
 
 app.config(function ($routeProvider,$locationProvider) {
 	$routeProvider
-			.when('/', {
-				templateUrl: 'pages/index.ejs',
+			.when('/', {   
+				templateUrl: 'testCrud/index.ejs',
 				controller: 'indexController'
 			})
 			.when('/about', {
@@ -18,8 +18,14 @@ app.config(function ($routeProvider,$locationProvider) {
 			$locationProvider.html5Mode(true);
 });
 
-app.controller('indexController', function($scope,$route){
-	$scope.message = 'Get started today...';
+
+
+app.controller('indexController', function($scope,$route,$http){
+$http.get('/api/posts/').
+    success(function(data, status, headers, config) {
+      $scope.posts = data.posts;
+      console.log(data);
+    });
 });
 
 app.controller('aboutController', function($scope,$route){

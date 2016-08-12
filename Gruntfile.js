@@ -5,7 +5,7 @@ module.exports =function(grunt){
 
 			jshint:{
 				//define files to lint
-				files: ['Gruntfile.js','models/**/*.js','public/**/*.js','routes/**/*.js','app.js'],
+				files: ['Gruntfile.js','app.js','models/**/*.js','public/**/*.js','routes/**/*.js'],
 				options: {'curly':true,
 														'globals': {
 							          'jQuery': true,
@@ -18,19 +18,22 @@ module.exports =function(grunt){
 					livereload: true
 				},
 				express:{
-						files:['<%= jshint.files %>','views/**/*.ejs'],
+						files:['<%= jshint.files %>','views/**/*.ejs','config/**/*.json','public/**/*.*','bin/**/*.*'],
 						tasks: ['express'],
 						options:{
 							spawn:false
 						}	
 				},
-				files:['<%= jshint.files %>','views/**/*.ejs'],
+				files:['<%= jshint.files %>','views/**/*.ejs','config/**/*.json','public/**/*.*','bin/**/*.*'],
 				tasks:['jshint']
 			},
 
 			express: {
     options: {
       background: true,
+      fallback: function(err) {
+      	console.log('Server crashed: '+err);
+      },
       node_env: 'development',
       debug: true
     },

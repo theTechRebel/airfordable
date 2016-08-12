@@ -1,30 +1,14 @@
-// 
-// running app using express
-// set DEBUG=myapp:* & npm start
-// 
-//require express
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var bodyParser = require('body-parser');    
 
-//require index.js
+//require index.js the deafault load up route
 var index = require('./routes/index');
-
-//require Sequelize ORM
-var orm = require('./models/sequelize');
-
-//test the connection
-orm
-  .authenticate()
-  .then(function(err) {
-    console.log('mysql:true');
-  })
-  .catch(function (err) {
-    console.log('Unable to connect to the database:', err);
-  });
+//require api.js the API route
+var api = require('./routes/api');
 
 //create an instance of express & call it app
 var app = express();
@@ -48,6 +32,8 @@ app.use(express.static(path.join(__dirname, 'views')));
 
 //for a request @ localhost:3000/ use this reouter object
 app.use('/', index);
+//for a request @ localhost:3000/api/* use this router object
+app.use('/api/',api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

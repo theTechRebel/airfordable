@@ -1,7 +1,7 @@
 //require express
-var express = require('express');
-//creating a new router object
-var router = express.Router();
+var router = require('express').Router();
+var models = require('../models');
+
 
 /* GET home page. */
 router

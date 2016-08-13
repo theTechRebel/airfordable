@@ -1,10 +1,9 @@
 var api = require('express').Router();
-//require the db Post object
-var Post = require('../models/post');
+var models = require('../models');
 
 /* API for getting all posts */
 api.get('/posts/', function(req, res, next) {
-    Post.findAll().then(function(posts) {
+    models.Posts.findAll().then(function(posts) {
       res.json({posts:posts});
     });
 });

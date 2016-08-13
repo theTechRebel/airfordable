@@ -20,6 +20,7 @@
     "grunt": "^1.0.1",
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
-    "grunt-express-server": "^0.5.3"
+    "grunt-express-server": "^0.5.3",
+    "sequelize-cli": "^2.4.0"
   }
 }

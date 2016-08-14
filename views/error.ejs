@@ -1,15 +1,11 @@
 <% include ./partials/head %>
-<% include ./partials/header %>
-<main>
- <div class="jumbotron">
-    <h1><%= message %></h1>
-	<h2><%= error.status %></h2>
-	<pre><%= error.stack %></pre>
- </div>
-</main>
-<footer>
-<% include ./partials/footer %>
-</footer>
+<body>
+		<div class="jumbotron">
+		    <h1><%= message %></h1>
+						<h2><%= error.status %></h2>
+						<pre><%= error.stack %></pre>
+		</div>
+<footer><% include ./partials/footer %></footer>
 </body>
 </html>
 

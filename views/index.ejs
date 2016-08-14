@@ -1,10 +1,9 @@
 <% include ./partials/head %>
-<body class="container" ng-cloak ng-controller='homeController'>
-<% include ./partials/header %>
-    <main ng-view>
-    </main>
-    <footer>
-        <% include ./partials/footer %>
-    </footer>
+<body class="container" ng-cloak>
+    <div ng-view>
+    </div>
+<footer>
+<% include ./partials/footer %>
+</footer>
 </body>
 </html>

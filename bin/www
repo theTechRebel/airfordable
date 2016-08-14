@@ -23,12 +23,31 @@ app.set('port', port);
 var server = http.createServer(app);
 
 //run database sync
-models.sequelize.sync({force:true}).then(function(){
-
-  //start the server
-  server.listen(port);
-  server.on('error', onError);
-  server.on('listening', onListening);  
+models.sequelize.sync({force:true})
+  //load in some sample data
+  .then(function(){
+    return models.Posts.create({
+      title: "Lorem ipsum",
+      text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    })
+  .then(function(){
+    return models.Posts.create({
+      title: "Sed egestas",
+      text: "Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus."
+    })
+  .then(function(){
+    return models.Posts.create({
+      title:'Dilor sitt',
+      text:'ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida'   
+      });
+    })
+  .then(function(){
+    //start the server
+    server.listen(port);
+    server.on('error', onError);
+    server.on('listening', onListening);   
+    });
+  });   
 });
 
 

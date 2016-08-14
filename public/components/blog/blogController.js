@@ -1,9 +1,8 @@
-app
-		.controller('blogController', function($scope,$route,$http){
+app.controller('blogController', function($scope,$route,$http){
 		$http.get('/api/posts/').
     success(function(data, status, headers, config) {
-      $scope.posts = data.posts;
-    });
+	    	$scope.posts = data.posts;
+    	});
 		});
 
 
